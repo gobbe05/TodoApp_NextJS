@@ -1,7 +1,8 @@
 import CreateTodo from "./createTodo"
 import Todo from "./todo";
+import 'dotenv/config'
 async function GetTodos(complete?: boolean) {
-  const response = await fetch("http://217.215.4.238:3000/api/todo", {
+  const response = await fetch(process.env.SERVERPATH + "/api/todo", {
     cache: 'no-store',
     method: "GET",
   })

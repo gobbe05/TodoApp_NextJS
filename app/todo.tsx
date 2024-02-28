@@ -2,12 +2,12 @@
 
 import { useRouter } from "next/navigation"
 import {IoCheckmarkOutline, IoClose, IoTrash} from "react-icons/io5"
-
+import 'dotenv/config'
 export default function Todo({id, title, completed} : {id: number, title: string, completed: boolean}){
   const router = useRouter();
 
   const complete = async () => {
-    await fetch("http://217.215.4.238:3000/api/todo", {
+    await fetch(process.env.SERVERPATH + "/api/todo", {
       method: "PATCH",
       headers: {
         'Content-Type' : 'application/json'
@@ -21,7 +21,7 @@ export default function Todo({id, title, completed} : {id: number, title: string
   }
   
   const deleteTodo = async () => {
-    await fetch("http://217.215.4.238:3000/api/todo", {
+    await fetch(process.env.SERVERPATH + "/api/todo", {
       method: "DELETE",
       headers: {
         'Content-Type' : 'application/json'

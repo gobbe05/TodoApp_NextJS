@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react"
+import 'dotenv/config'
 
 export default function CreateTodo() {
   const [title, setTitle] = useState<string>("");
@@ -9,7 +10,7 @@ export default function CreateTodo() {
   const router = useRouter()
 
   const create = async () => {
-    await fetch("http://217.215.4.238:3000/api/todo", {
+    await fetch(process.env.SERVERPATH + "/api/todo", {
       method: "POST",
       headers: {
         'Content-Type' : 'application/json'
@@ -21,7 +22,7 @@ export default function CreateTodo() {
   }
 
   const deleteAll = async () => {
-    await fetch("http://217.215.4.238:3000/api/todo", {
+    await fetch(process.env.SERVERPATH + "/api/todo", {
       method: "DELETE",
       headers: {
         'Content-Type' : 'application/json'
