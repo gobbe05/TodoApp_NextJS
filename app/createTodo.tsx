@@ -2,16 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react"
-import dotenv from 'dotenv'
-dotenv.config()
 export default function CreateTodo() {
   const [title, setTitle] = useState<string>("");
   
   const router = useRouter()
 
   const create = async () => {
-    console.log(process.env.SERVERPATH)
-    await fetch(process.env.SERVERPATH + "/api/todo", {
+    await fetch("/api/todo", {
       method: "POST",
       headers: {
         'Content-Type' : 'application/json'
