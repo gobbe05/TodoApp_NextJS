@@ -10,6 +10,7 @@ export default function CreateTodo() {
   const router = useRouter()
 
   const create = async () => {
+    console.log(process.env.SERVERPATH)
     await fetch(process.env.SERVERPATH + "/api/todo", {
       method: "POST",
       headers: {
