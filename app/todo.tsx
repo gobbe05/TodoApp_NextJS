@@ -7,7 +7,7 @@ export default function Todo({id, title, completed} : {id: number, title: string
   const router = useRouter();
 
   const complete = async () => {
-    await fetch(process.env.SERVERPATH + "/api/todo", {
+    await fetch("/api/todo", {
       method: "PATCH",
       headers: {
         'Content-Type' : 'application/json'
@@ -21,7 +21,7 @@ export default function Todo({id, title, completed} : {id: number, title: string
   }
   
   const deleteTodo = async () => {
-    await fetch(process.env.SERVERPATH + "/api/todo", {
+    await fetch("/api/todo", {
       method: "DELETE",
       headers: {
         'Content-Type' : 'application/json'

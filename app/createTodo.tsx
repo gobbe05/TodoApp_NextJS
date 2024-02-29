@@ -20,7 +20,7 @@ export default function CreateTodo() {
   }
 
   const deleteAll = async () => {
-    await fetch(process.env.SERVERPATH + "/api/todo", {
+    await fetch("/api/todo", {
       method: "DELETE",
       headers: {
         'Content-Type' : 'application/json'
