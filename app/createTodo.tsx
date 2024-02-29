@@ -2,8 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react"
-import 'dotenv/config'
-
+import dotenv from 'dotenv'
+dotenv.config()
 export default function CreateTodo() {
   const [title, setTitle] = useState<string>("");
   
