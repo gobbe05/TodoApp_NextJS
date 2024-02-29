@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "../../db";
 
-export async function GET(req: Request) {
+export async function GET() {
  const todos = await prisma.todo.findMany();
   return NextResponse.json({todos: todos})
 }
@@ -23,12 +23,8 @@ export async function PATCH(req: Request) {
 }
 
 export async function DELETE(req: Request) {
-  const { DeleteAll, id} = await req.json()
+  const {id} = await req.json()
   
-  DeleteAll && await prisma.todo.deleteMany({})
-  if(DeleteAll) return NextResponse.json({message: "Deleted all"}, {status: 200})
-  if(!id) return NextResponse.json({message: "Missing arguments"}, {status: 400})
-
   await prisma.todo.delete({where: {id}})
   return NextResponse.json({message: "Success"}, {status: 200})
 }
